@@ -57,7 +57,13 @@ variable "backup_retention_period" {
 }
 
 variable "backup_target" {
-  description = "백업 저장 위치"
+  description = "백업 저장 위치. region 또는 outposts"
+  type        = string
+  default     = null
+}
+
+variable "backup_window" {
+  description = "백업 저장 시간. 자동 백업 실행 시간대. UTC 기준 HH:MM-HH:MM 형식으로 표기하며 기본값은 랜덤하게 결정 됨"
   type        = string
   default     = null
 }
@@ -115,4 +121,10 @@ variable "availability_zone" {
 variable "security_group_ids" {
   description = "RDS에 적용 될 보안 그룹 id 목록"
   type        = set(string)
+}
+
+variable "snapshot_identifier" {
+  description = "RDS 생성시 사용할 snapshot arn"
+  type        = string
+  default     = null
 }

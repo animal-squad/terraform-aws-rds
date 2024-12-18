@@ -21,6 +21,7 @@ resource "aws_db_instance" "rds" {
 
   backup_retention_period = var.backup_retention_period
   backup_target           = var.backup_target
+  backup_window           = var.backup_window
 
   availability_zone      = var.availability_zone
   vpc_security_group_ids = var.security_group_ids
@@ -30,6 +31,7 @@ resource "aws_db_instance" "rds" {
   //NOTE: 삭제 시 snapshot 생성 여부
   skip_final_snapshot          = true
   performance_insights_enabled = true
+  snapshot_identifier          = var.snapshot_identifier
 
   publicly_accessible = var.publicly_accessible
 
